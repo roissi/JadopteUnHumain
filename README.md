@@ -1,13 +1,33 @@
-# J'adopte un humain Back
+# J'adopte un humain (Back)
 
-## Git Workflow
+## Projet de fin de formation ("Apothéose") / O'Clock / 03.2023
 
-- Créer une branche par feature, commit les travaux sur cette branche et push le tout sur Github.
-- Depuis GitHub créer une Pull Request.
-- Demander une review aux personnes concernées.
-- Si vous avez une review positive vous pouvez Squash and merge sur Master.
+- J’adopte un humain est le site web d’un refuge pour animaux fictif qui permet à de futurs adoptants de choisir le compagnon le plus adapté à ses envies, ses valeurs et ses besoins (animaux de compagnie traditionnels + NAC : nouveaux animaux de compagnie). A travers ce projet, on avait cette ambition de dépoussiérer les sites vitrines existants, plutôt fades et sans grandes interactions, et de permettre de fournir aux refuges un système de gestion des animaux simplifié et sécurisé.
 
-### Update de la branche avec Master
 
-Pour récupérer les commits récents sur Master vous devez rebase votre branche : `git pull origin master --rebase`
+- L’idée forte de J’adopte un humain repose sur un système de matching entre le profil renseigné par l’utilisateur durant sa connexion et le profil des animaux renseignés 
+par les soignants (staff).
+
+
+- On a souhaité que le site comporte 3 niveaux de droits (des rôles et des permissions) : profil User / profil Staff / profil Admin.
+
+### Technos utilisées pour le Back
+
+- PostgreSQL - Node.js - Express
+- JOI - Schéma validation
+- JWT - Authentification, Autorisation
+- Bcrypt -  Hachage de mot de passe sécurisée
+- Multer - Gestion des images
+- Winston - Journalisation des erreurs
+- Jest -  Supertest - Tests unitaires
+- Swagger - Documentations
+- DEBUG - Aide au débogage
+
+### L'équipe
+
+- Matthieu Skrzypczak (Back) - Lead Dev Back
+- Cyril De Graeve (Back) - Product Owner
+- Morgane Gamory (Front) - SCRUM Master
+- Mia Garcia (Front) - Git Master
+- Florent Magat (Front) - Lead Dev Front
 
