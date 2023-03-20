@@ -1,12 +1,10 @@
-const { Avatar, Tag } = require("../models");
-const multer = require('multer');
+import { Avatar, Tag } from "../models/index.js";
+import clean from "../script/cleanPhoto.js";
+
 
 const avatarsController = {
 
-    /**
-     * Récupère la liste des avatarx
-     * @returns Liste des avatarx
-     */
+    // Récupère tous les avatars
     async getAll(_, res, next) {
         try {
             const avatars = await Avatar.findAll();
@@ -48,6 +46,7 @@ const avatarsController = {
                 };
 
                 const addAvatar = await Avatar.create(data);
+                clean.deleteAvatarsFiles();
                 res.json(addAvatar);
             } else {
                 next(new Error("Problème de BDD"));
@@ -58,7 +57,6 @@ const avatarsController = {
             });
         }
     },
-
     // Modifie un avatar
     async updateAvatar(req, res, next) {
         try {
@@ -71,11 +69,11 @@ const avatarsController = {
           if (req.body.name) {
             data.name = req.body.name;
           }
-      console.log("test", data);
           // Met à jour l'avatar en BDD
           const updatedAvatar = await Avatar.update(req.params.id, data);
           // Retourne l'avatar modifié
           if(updatedAvatar) {
+            clean.deleteAvatarsFiles();
             res.json(updatedAvatar);
         } else {
             next(new Error("Problème de BDD"));
@@ -92,6 +90,7 @@ const avatarsController = {
         try {
             const avatar = await Avatar.delete(req.params.id);
             if (avatar) {
+                clean.deleteAvatarsFiles();
                 res.json(avatar);
             }
             else {
@@ -104,8 +103,7 @@ const avatarsController = {
         }
     },
 
-    // START : MON CODE ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
+    // Récupère tous les tags de l'avatar
     async getAvatarTags(req, res) {
         const avatarId = req.params.id;
       
@@ -114,10 +112,10 @@ const avatarsController = {
           res.json(tags);
         } catch (err) {
           console.error(err);
-          res.status(500).json({ error: 'Error getting avatar tags - controller' });
+          res.status(500).json({ error: 'Erreur lors de la récupération des tags - controller' });
         }
       },
-      
+    // Ajoute un tag à l'avatar  
     async addAvatarTag(req, res) {
         try {
         const tag = new Tag(req.body);
@@ -145,7 +143,7 @@ const avatarsController = {
           res.status(500).json({ error: 'Error adding avatar tag' });
         }
       },
-
+    // Supprime un tag à l'avatar
     async deleteAvatarTag(req, res) {
         try {
           await Avatar.deleteAvatarTag(req.params.id, req.params.tagId);
@@ -157,7 +155,7 @@ const avatarsController = {
           res.status(500).json({ error: 'Error deleting avatar tag' });
         }
       }
-// END : MON CODE ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 }
 
-module.exports = avatarsController;
+export default avatarsController;

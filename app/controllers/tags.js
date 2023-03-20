@@ -1,12 +1,9 @@
-const { Tag } = require("../models");
+import { Tag } from "../models/index.js";
 
 
 const tagsController = {
 
-    /**
-     * Récupère la liste des tags
-     * @returns Liste des tags
-     */
+    // Récupère tous les tags
     async getAll(_, res, next) {
         try {
             const tags = await Tag.findAll();
@@ -44,6 +41,7 @@ const tagsController = {
             const tagExist = await tag.checkTag();           // Controle si le tag existe déjà
             if (!tagExist) {
             const addTag = await Tag.create(req.body);
+            
             if (addTag) {
                 res.json(addTag);
             } else {
@@ -112,4 +110,4 @@ const tagsController = {
     },
 }
 
-module.exports = tagsController;
+export default tagsController;

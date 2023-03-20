@@ -1,11 +1,8 @@
-const { Adopt } = require("../models");
+import { Adopt } from "../models/index.js";
 
 const adoptsController = {
 
-    /**
-     * Récupère la liste des adoptions
-     * @returns Liste des adoptions
-     */
+    //Récupère toutes les adoptions
     async getAll(_, res, next) {
         try {
             const adopts = await Adopt.findAll();
@@ -20,11 +17,33 @@ const adoptsController = {
             });
         } 
     },
-
    // Récupère une adoption
     async getAdopt(req, res, next) {
-        try {
+        try {      
             const adopt = await Adopt.findByPk(req.params.id);
+            if(req.userProfil[0].id == adopt.user_id) {
+                if(adopt) {
+                    res.json(adopt);
+                } else {
+                    next(new Error("Problème de BDD"));
+                }
+            } else {
+                res.status(500).json({
+                error: "Ce n'est pas votre fiche, l'id ne correspond pas !"
+                });
+            }
+            
+        } catch(error) {
+            res.status(500).json({
+                error: "erreur !"
+            });
+        }
+    },
+    // Récupère une adoption par un admin ou un membre du staff
+    async adminGetAdopt(req, res, next) {
+        try {      
+            const adopt = await Adopt.findByPk(req.params.id);
+            
             if(adopt) {
                 res.json(adopt);
             } else {
@@ -51,7 +70,6 @@ const adoptsController = {
             });
         }      
     },
-
     // Modifie une adoption
     async updateAdopt(req, res, next) {
         try {
@@ -67,7 +85,6 @@ const adoptsController = {
             });
         }
     },
-
     // Supprime une adoption
     async deleteAdopt(req,res,next){
         try {
@@ -86,4 +103,4 @@ const adoptsController = {
     },
 }
 
-module.exports = adoptsController;
+export default adoptsController;

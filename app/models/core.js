@@ -1,4 +1,4 @@
-const client = require("../service/dbClient")
+import client from '../service/dbClient.js';
 
 class Core {
     tableName;
@@ -95,7 +95,6 @@ class Core {
                 indexPlaceholder += 1;
                 values.push(value);
             });
-
             const preparedQuery = {
                 text: `
                     INSERT INTO "${this.tableName}"
@@ -175,4 +174,4 @@ class Core {
     }
 }
 
-module.exports = Core;
+export default Core;

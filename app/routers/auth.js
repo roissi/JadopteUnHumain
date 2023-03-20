@@ -1,17 +1,17 @@
-const express = require('express');
-const authController  = require('../controllers/auth');
+import express from 'express';
+import authController from '../controllers/auth.js';
+import usersController from '../controllers/users.js';
+import validation from "../service/validation.js";
+import schemaRegister from "../schemas/registerBody.js";
+
 const router = express.Router();
-const validation = require("../service/validation");
-const { usersController } = require('../controllers');
-const schemaRegister = require("../schemas/registerBody");
 
+router.post("/login", validation.check(schemaRegister.login(),"body"), authController.checkLogin);
+router.post("/register", validation.check(schemaRegister.create(),"body"), usersController.addUser);
 
-router.post("/login", authController.checkLogin);
-router.post("/register", usersController.addUser);
+export default router;
 
-module.exports = router;
-
-// doc swagger : http://localhost:3000/api-docs
+// doc swagger : /api-docs
 
 /**
  * POST /api/login
@@ -32,6 +32,8 @@ module.exports = router;
  * @return {object} 500 - Unexpected error
  */
 
+//  SCHEMA SWAGGER \\
+
 /**
  * Register
  * @typedef {object} Register
@@ -39,7 +41,7 @@ module.exports = router;
  * @property {string} firstname - prénom
  * @property {string} email - email
  * @property {string} password - mot de passe (min 6)
- * @property {string} phone - numéro de téléphone (doit commencer à 0 et contenir 10 chiffres)
+ * @property {string} phone - numéro de téléphone (doit commencer par 0 et contenir 10 chiffres)
  */
 
 /**

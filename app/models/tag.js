@@ -1,5 +1,5 @@
-const Core = require('./core');
-const client = require('../service/dbClient');
+import Core from './core.js';
+import client from '../service/dbClient.js';
 
 class Tag extends Core {
     static tableName = 'tag';
@@ -8,6 +8,7 @@ class Tag extends Core {
         super(obj);
         this.id = obj.id;
         this.name = obj.name;
+        this.priority = obj.priority
     }
     // Permet de vérifier si le nom existe
     async checkTag() {
@@ -37,4 +38,4 @@ class Tag extends Core {
     }
 }
 
-module.exports = Tag;
+export default Tag;
