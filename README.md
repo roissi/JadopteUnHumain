@@ -2,7 +2,7 @@
 
 ## Projet de fin de formation ("Apothéose") / O'Clock / 03.2023
 
-- J’adopte un humain est le site web d’un refuge pour animaux fictif qui permet à de futurs adoptants de choisir le compagnon le plus adapté à ses envies, ses valeurs et ses besoins (animaux de compagnie traditionnels + NAC : nouveaux animaux de compagnie). A travers ce projet, on avait cette ambition de dépoussiérer les sites vitrines existants, plutôt fades et sans grandes interactions, et de permettre de fournir aux refuges un système de gestion des animaux simplifié et sécurisé.
+- J’adopte un humain est le site web d’un refuge pour animaux fictif qui permet à de futurs adoptants de choisir le compagnon le plus adapté à ses envies, ses valeurs et ses besoins. A travers ce projet, nous avons eu cette ambition de dépoussiérer les sites vitrines existants, plutôt fades et sans grandes interactions, et de permettre de fournir aux refuges un système de gestion des animaux simplifié et sécurisé.
 
 
 - L’idée forte de J’adopte un humain repose sur un système de matching entre le profil renseigné par l’utilisateur durant sa connexion et le profil des animaux renseignés 
