@@ -9,7 +9,9 @@
 par les soignants (staff).
 
 
-- On a souhaité que le site comporte 3 niveaux de droits (des rôles et des permissions) : profil User / profil Staff / profil Admin.
+- Nous avons souhaité que le site comporte 3 niveaux de droits (des rôles et des permissions) : profil User / profil Staff / profil Admin.
+
+- Notre refuge ne se contente pas uniquement de proposer des chiens et des chats à l’adoption, mais nous y incluons aussi des NAC (Nouveaux Animaux de Compagnie, tels que le lapin, le cochon nain, l’iguane, le perroquet, le furet, etc.).
 
 ### Technos utilisées pour le Back
 
